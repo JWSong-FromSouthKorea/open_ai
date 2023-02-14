@@ -18,7 +18,7 @@ import ujson
 import openai
 import aiohttp
 
-openai.api_key = "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"
+openai.api_key = "YOUR_API_KEY"
 
 manager = LoginManager(
     Config.secret,

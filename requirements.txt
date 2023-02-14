@@ -1,0 +1,6 @@
+fastapi==0.90.1
+fastapi-login
+pydantic[dotenv, email]
+python-multipart
+uvicorn
+sqlalchemy

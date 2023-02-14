@@ -1,0 +1,17 @@
+
+gpython:S1542"JRename function "Path" to match the regular expression ^[a-z_][a-z0-9_]*$.(–Ø Àıÿÿÿÿ
+bpython:S107"KFunction "Path" has 16 parameters, which is greater than the 13 authorized.(ç—Ş‰
+hpython:S1542."KRename function "Query" to match the regular expression ^[a-z_][a-z0-9_]*$.(èÔµóøÿÿÿÿ
+cpython:S107/"LFunction "Query" has 16 parameters, which is greater than the 13 authorized.(ç—Ş‰
+dpython:S1542U"LRename function "Header" to match the regular expression ^[a-z_][a-z0-9_]*$.(÷ç¤
+dpython:S107V"MFunction "Header" has 17 parameters, which is greater than the 13 authorized.(ç—Ş‰
+dpython:S1542~"LRename function "Cookie" to match the regular expression ^[a-z_][a-z0-9_]*$.(ºù“Ë
+dpython:S107"MFunction "Cookie" has 16 parameters, which is greater than the 13 authorized.(ç—Ş‰
+hpython:S1542¥"JRename function "Body" to match the regular expression ^[a-z_][a-z0-9_]*$.(…ÒÎııÿÿÿÿ
+cpython:S107¦"KFunction "Body" has 16 parameters, which is greater than the 13 authorized.(ç—Ş‰
+cpython:S1542Ì"JRename function "Form" to match the regular expression ^[a-z_][a-z0-9_]*$.(„èÆ
+cpython:S107Í"KFunction "Form" has 15 parameters, which is greater than the 13 authorized.(ç—Ş‰
+bpython:S1542ñ"JRename function "File" to match the regular expression ^[a-z_][a-z0-9_]*$.(ºŠ$
+cpython:S107ò"KFunction "File" has 15 parameters, which is greater than the 13 authorized.(ç—Ş‰
+kpython:S1542–"MRename function "Depends" to match the regular expression ^[a-z_][a-z0-9_]*$.(Ú‡©àıÿÿÿÿ
+lpython:S1542œ"NRename function "Security" to match the regular expression ^[a-z_][a-z0-9_]*$.(§¾üÆüÿÿÿÿ

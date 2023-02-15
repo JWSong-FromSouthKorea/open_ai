@@ -42,7 +42,7 @@ secret_parser = subparsers.add_parser('create-secret',
 secret_parser.add_argument('--overwrite', action='store_true', help="Overwrite the present secret value.")
 secret_parser.set_defaults(func=create_secret)
 
-db_parser = subparsers.add_parser('create-db', help="Creates the tables and the databses for the project")
+db_parser = subparsers.add_parser('create-db', help="Creates the tables and the databases for the project")
 db_parser.set_defaults(func=create_tables)
 
 
@@ -82,10 +82,13 @@ class StandaloneApplication(gunicorn.app.base.BaseApplication):
 
 if __name__ == '__main__':
     from app import app
+
+
     options = {
         'bind': '%s:%s' % ('127.0.0.1', '8080'),
         'workers': number_of_workers(),
         'worker_class': 'uvicorn.workers.UvicornWorker',
         'reload': True
     }
+    create_tables()
     StandaloneApplication(app, options).run()

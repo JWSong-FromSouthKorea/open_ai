@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-from typing import Optional
 
 
 class LoginParam(BaseModel):
@@ -7,22 +6,13 @@ class LoginParam(BaseModel):
     password: str
 
 
-class TextRequest(BaseModel):
-    prompt: str
-    model: str
-    length: int
-
-
 class ChatTextRequest(BaseModel):
     ai_prompt: str
     user_prompt: str
+    previous_prompt: str
     model: str
     length: int
     user: str
-
-
-class TextResponse(BaseModel):
-    response: str
 
 
 class ChatTextResponse(BaseModel):

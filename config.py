@@ -11,6 +11,10 @@ class Settings(BaseSettings):
     secret: str = os.urandom(24).hex()
     database_uri: str = "mysql+mysqldb://gunicorn:password@127.0.0.1:3306/open_ai"
     token_url: str = "/login"
+    api_key: str = "MY_API_KEY"
+    api_model: str = "text-davinci-003"
+    api_max_token: int = 2048
+    api_temperature: float = 0.8
 
     class Config:
         env_file = '.env'

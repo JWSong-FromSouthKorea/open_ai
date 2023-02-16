@@ -4,7 +4,7 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 from config import Config
 
 Base = declarative_base()
-engine = create_engine(Config.database_uri, future=True)
+engine = create_engine(Config.database_uri, future=True, pool_pre_ping=True, pool_size=20, pool_reset_on_return=None,)
 SessionLocal = sessionmaker(bind=engine)
 
 
@@ -26,3 +26,7 @@ def get_session():
         yield session
     finally:
         session.close()
+
+
+def export_session():
+    return SessionLocal()

@@ -27,3 +27,8 @@ def verify_password(plaintext: str, hashed: str):
     """
 
     return manager.pwd_context.verify(plaintext, hashed)
+
+
+def get_secret_value():
+    return manager.secret.secret.get_secret_value()
+

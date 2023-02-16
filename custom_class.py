@@ -7,11 +7,10 @@ class LoginParam(BaseModel):
 
 
 class ChatTextRequest(BaseModel):
+    previous_prompt: str
     ai_prompt: str
     user_prompt: str
     previous_prompt: str
-    model: str
-    length: int
     user: str
 
 

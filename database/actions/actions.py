@@ -2,28 +2,16 @@ from typing import Callable, Iterator, Optional
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import OperationalError
 from sqlalchemy import and_
-from database import get_session
 from database.models import User, ChatList, ChatHistory
 from response_classe import CommonResponse
-from custom_class import ChatHistoryRequest
-from verify import hash_password, manager
+from verify import hash_password
 
 
-@manager.user_loader(session_provider=get_session)
 async def get_user_by_login_id(
         login_id: str,
         db: Optional[Session] = None,
         session_provider: Callable[[], Iterator[Session]] = None
 ) -> Optional[User]:
-    """
-    Queries the database for a user with the given name
-    Args:
-        login_id: The name of the user
-        db: The currently active database session
-        session_provider: Optional method to retrieve a session if db is None (provided by our LoginManager)
-    Returns:
-        The user object or none
-    """
 
     if db is None and session_provider is None:
         raise ValueError("db and session_provider cannot both be None.")
@@ -31,7 +19,10 @@ async def get_user_by_login_id(
     if db is None:
         db = next(session_provider())
 
-    return db.query(User).filter(and_(User.login_id == login_id)).first()
+    user: Optional[User] = db.query(User).filter(and_(User.login_id == login_id)).first()
+    print(user)
+
+    return user
 
 
 async def create_user(login_id: str, name: str, password: str, db: Session) -> CommonResponse:
@@ -54,23 +45,22 @@ async def create_user(login_id: str, name: str, password: str, db: Session) -> C
         return CommonResponse(data=user, result=True)
     except OperationalError:
         db.rollback()
-        return CommonResponse(data=user, result=False)
-    finally:
         db.close()
+        return CommonResponse(data=user, result=False)
 
 
 async def create_chat_list(prompt: str, uuid: str, db: Session) -> CommonResponse:
-    chat = ChatList(id=uuid, name=prompt)
+    chat = ChatList(id=uuid, name=prompt, user_id="")
     try:
         db.begin()
         db.add(chat)
         db.flush()
+        db.close()
         return CommonResponse(data=chat, result=True)
     except OperationalError:
         db.rollback()
-        return CommonResponse(data=chat, result=False)
-    finally:
         db.close()
+        return CommonResponse(data=chat, result=False)
 
 
 async def create_chat_history(uuid: str, history: str, db: Session) -> CommonResponse:
@@ -102,3 +92,4 @@ async def create_chat_history(uuid: str, history: str, db: Session) -> CommonRes
         return CommonResponse(data=None, result=False)
 
     return data
+
